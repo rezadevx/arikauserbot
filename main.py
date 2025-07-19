@@ -1,4 +1,4 @@
-from navygram import Client, idle
+from pyrogram import Client, idle
 from config import API_ID, API_HASH, STRING_SESSION
 import importlib, os, time
 
