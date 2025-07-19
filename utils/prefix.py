@@ -5,12 +5,21 @@ prefix_db = PrefixDB()
 
 def command(cmd: str):
     async def func(flt, client, message):
-        user_id = message.from_user.id if message.from_user else None
-        if not user_id:
+        if not message.from_user:
             return False
 
-        prefix = await prefix_db.get_prefix(user_id)
+        user_id = message.from_user.id
         text = message.text or ""
-        return text.startswith(f"{prefix}{cmd}")
-    
+
+        prefix = await prefix_db.get_prefix(user_id)
+        if not prefix:
+            prefix = "."
+
+        match = text.startswith(f"{prefix}{cmd}")
+        
+        # Debug log (aktifkan saat perlu)
+        # print(f"[DEBUG] UserID: {user_id} | Prefix: {prefix} | CMD: {cmd} | Match: {match} | Text: {text}")
+
+        return match
+
     return filters.create(func)
