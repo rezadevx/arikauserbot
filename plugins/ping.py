@@ -1,13 +1,14 @@
-from pyrogram import Client, filters
-from main import start_time
+from pyrogram import Client
+from utils.prefix import command
+from core.time import start_time
 import time
 
 def get_uptime():
     uptime = time.time() - start_time
-    h, m, s = int(uptime // 3600), int((uptime // 60) % 60), int(uptime % 60)
+    h, m, s = int(uptime // 3600), int((uptime % 3600) // 60), int(uptime % 60)
     return f"{h} jam {m} menit {s} detik"
 
-@Client.on_message(filters.command("ping", prefixes=".") & filters.me)
+@Client.on_message(command("ping"))
 async def ping(client, message):
     start = time.time()
     reply = await message.reply("🏓")
