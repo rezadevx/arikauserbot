@@ -1,0 +1,6 @@
+navygram
+motor
+pymongo
+aiosignal
+tornado
+python-dotenv
