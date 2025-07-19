@@ -12,5 +12,5 @@ def command(cmd: str):
         prefix = await prefix_db.get_prefix(user_id)
         text = message.text or ""
         return text.startswith(f"{prefix}{cmd}")
-
+    
     return filters.create(func)
