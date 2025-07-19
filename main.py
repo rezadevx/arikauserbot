@@ -1,8 +1,7 @@
-from pyrogram import Client, idle
+from navygram import Client, idle
 from config import API_ID, API_HASH, STRING_SESSION
-import time
 
-# Import plugin secara manual
+# Import plugin manual
 from plugins import ping
 from plugins import alive
 from plugins import broadcast
@@ -10,8 +9,6 @@ from plugins import help
 from plugins import gruplogs
 from plugins import prefixes
 from plugins import blacklist
-
-start_time = time.time()
 
 app = Client(
     name="arika_userbot",
